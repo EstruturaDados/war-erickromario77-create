@@ -26,18 +26,18 @@ void limparBuffer() {
 
 // --- Função Principal (main) ---
 
-int main() {
+int main(){
     struct territorio mapa[MAX_TERRITORIOS];//Vetor de territórios
     int totalterritorios = 0; // Contador de territórios cadastrados
     
-    // Laço principal do Menu
+    // Cabeçalho do jogo    
     printf("==============================\n");
     printf("    JOGO WAR - NIVEL NOVATO   \n");
     printf("==============================\n");
  
     //Loop para cadastro dos territórios
     for (int i = 0; i < MAX_TERRITORIOS; i++) {
-        printf("Cadastro do Territorio %d:\n", i + 1);
+        printf("\nCadastro do Territorio %d:\n", i + 1);
 
         printf("Nome do Territorio: ");
         fgets(mapa[i].nome, sizeof(mapa[i].nome), stdin);
@@ -49,13 +49,18 @@ int main() {
         
         printf("Numero de Tropas: ");
         scanf("%d", &mapa[i].tropas);
-        
         limparBuffer(); // Limpa o buffer após a leitura do número
+        totalterritorios++;
+        printf("------------------------------\n");
+    }
     
     // Exibe os territórios cadastrados
-    printf("\n MAPA DO MUNDO - ESTADO ATUAL \n");
+    printf("===================================\n");
+    printf("    MAPA DO MUNDO - ESTADO ATUAL   \n");
+    printf("===================================\n");
     for (int i = 0; i < MAX_TERRITORIOS; i++) {
-        printf("Territorio %d: %s, Cor: %s, Tropas: %d\n", i + 1, mapa[i].nome, mapa[i].cor, mapa[i].tropas);
+        printf("------------------------------- \n TERRITORIO %d \n Nome: %s\n Cor: %s\n Tropas: %d\n", i + 1, mapa[i].nome, mapa[i].cor, mapa[i].tropas);
     }
-    return 0;// Fim do programa
+    return 0;
 }
+ // Fim do programa
