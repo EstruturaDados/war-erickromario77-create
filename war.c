@@ -19,9 +19,9 @@ struct territorio {
 };
 
 // --- Função para limpar o buffer de entrada ---
-Void limparBufferEntrada() {
-	int c;
-	while ((c = getchar()) !n ‘\n’ && c !=EOF); //descarta caracteres até nova linha ou EOF
+void limparBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF); // descarta até o fim da linha
 }
 
 // --- Função Principal (main) ---
@@ -35,5 +35,26 @@ int main() {
     printf("    JOGO WAR - NIVEL NOVATO   \n");
     printf("==============================\n");
  
-    return 0;
+    //Loop para cadastro dos territórios
+    for (int i = 0; i < MAX_TERRITORIOS; i++) {
+        printf("Cadastro do Territorio %d:\n", i + 1);
+
+        printf("Nome do Territorio: ");
+        fgets(mapa[i].nome, sizeof(mapa[i].nome), stdin);
+        mapa[i].nome[strcspn(mapa[i].nome, "\n")] = '\0'; // Remove o caractere de nova linha
+
+        printf("Cor do Exercito: ");
+        fgets(mapa[i].cor, sizeof(mapa[i].cor), stdin);
+        mapa[i].cor[strcspn(mapa[i].cor, "\n")] = '\0'; // Remove o caractere de nova linha
+
+        printf("Numero de Tropas: ");
+        scanf("%d", &mapa[i].tropas);
+        limparBuffer(); // Limpa o buffer após a leitura do número
+    }
+    // Exibe os territórios cadastrados
+    printf("\nTerritorios Cadastrados:\n");
+    for (int i = 0; i < MAX_TERRITORIOS; i++) {
+        printf("Territorio %d: %s, Cor: %s, Tropas: %d\n", i + 1, mapa[i].nome, mapa[i].cor, mapa[i].tropas);
+    }
+    return 0;// Fim do programa
 }
