@@ -41,12 +41,15 @@ int main() {
 
         printf("Nome do Territorio: ");
         fgets(mapa[i].nome, sizeof(mapa[i].nome), stdin);
+        mapa[i].nome[strcspn(mapa[i].nome, "\n")] = 0; // Remove o caractere de nova linha
         
         printf("Cor do Exercito: ");
         fgets(mapa[i].cor, sizeof(mapa[i].cor), stdin);
+        mapa[i].cor[strcspn(mapa[i].cor, "\n")] = 0; // Remove o caractere de nova linha
         
         printf("Numero de Tropas: ");
         scanf("%d", &mapa[i].tropas);
+        
         limparBuffer(); // Limpa o buffer após a leitura do número
     
     // Exibe os territórios cadastrados
